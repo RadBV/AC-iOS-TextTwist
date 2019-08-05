@@ -9,12 +9,18 @@
 import UIKit
 
 class ViewController: UIViewController, UITextFieldDelegate {
-    
     var randomGame = WordData.allInfo.randomElement()!
-
+    @IBOutlet weak var availableLetters: UILabel!
+    
+    @IBAction func typeStuff(_ sender: UITextField) {
+        
+    }
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        availableLetters.text = randomGame.letters
         print(randomGame)
     }
 
