@@ -10,11 +10,12 @@ import UIKit
 
 class ViewController: UIViewController, UITextFieldDelegate {
     
-    
-    
+    var randomGame = WordData.allInfo.randomElement()!
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print(randomGame)
     }
 
 }
