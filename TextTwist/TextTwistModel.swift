@@ -10,6 +10,6 @@ import Foundation
 
 class TextTwistModel {
     //create an instance of the class in Data.swift
-    
+
     
 }

@@ -25,28 +25,28 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="GEd-El-dke">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="GEd-El-dke">
                                 <rect key="frame" x="217" y="325" width="162" height="196"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.82076733732876717" green="1" blue="0.7830961044520548" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="wFy-YD-XBE">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="wFy-YD-XBE">
                                 <rect key="frame" x="36" y="325" width="162" height="196"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.82076733729999996" green="1" blue="0.7830961045" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="GTp-ID-u8J">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="GTp-ID-u8J">
                                 <rect key="frame" x="36" y="584" width="162" height="196"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.82076733729999996" green="1" blue="0.7830961045" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="1wl-NE-lXh">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="1wl-NE-lXh">
                                 <rect key="frame" x="217" y="584" width="162" height="196"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.82076733729999996" green="1" blue="0.7830961045" alpha="1" colorSpace="calibratedRGB"/>
@@ -89,6 +89,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
+                                    <action selector="rightOrWrongWhenEnterPressed:" destination="BYZ-38-t0r" eventType="primaryActionTriggered" id="wxP-I4-ceC"/>
                                     <action selector="typeStuff:" destination="BYZ-38-t0r" eventType="editingChanged" id="3vY-Bw-M86"/>
                                 </connections>
                             </textField>
@@ -104,7 +105,13 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="FiveLetterWords" destination="GTp-ID-u8J" id="XpG-6W-xwG"/>
+                        <outlet property="FourLetterWords" destination="GEd-El-dke" id="ePb-7q-VQj"/>
+                        <outlet property="SixLetterWords" destination="1wl-NE-lXh" id="fsq-cU-YgB"/>
+                        <outlet property="ThreeLetterWords" destination="wFy-YD-XBE" id="hlw-vP-9Ht"/>
                         <outlet property="availableLetters" destination="g7k-h0-ZUA" id="g6W-8z-E8r"/>
+                        <outlet property="textField" destination="Taw-ee-EyZ" id="vpF-Oq-cjf"/>
+                        <outlet property="userMessageStuff" destination="ppF-Kb-Qib" id="qTa-wZ-EL0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
