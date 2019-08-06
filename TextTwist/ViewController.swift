@@ -29,18 +29,11 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if let inputText = textField.text{
-            let result = currentGame?.words.contains(inputText) ?? false
+            let result = currentGame?.verifyGuess(guess: inputText) ?? false
             if result {
                 userMessageLabel.text = "Correct!"
-                if textField.text?.count == 3 {
-                    ThreeLetterWords.text.append(contentsOf: "\(textField.text!)\n")
-                } else if textField.text?.count == 4 {
-                    FourLetterWords.text.append(contentsOf: textField.text!)
-                } else if textField.text?.count == 5 {
-                    FiveLetterWords.text.append(contentsOf: textField.text!)
-                } else if textField.text?.count == 6 {
-                    SixLetterWords.text.append(contentsOf: textField.text!)
-                }
+                addAnswerToTextView(answer: inputText)
+                
             } else {
                 userMessageLabel.text = "Wrong!"
             }
@@ -74,6 +67,20 @@ class ViewController: UIViewController, UITextFieldDelegate {
         return WordData.getRandomGame() ?? TestTwistInfo(wordCount: 0, letters: "", words: [""])
     }
     
+    private func addAnswerToTextView(answer: String) {
+        switch answer.count {
+        case 3:
+           ThreeLetterWords.text.append(contentsOf: "\(textField.text!)\n")
+        case 4:
+            FourLetterWords.text.append(contentsOf: "\(textField.text!)\n")
+        case 5:
+            FiveLetterWords.text.append(contentsOf: "\(textField.text!)\n")
+        case 6:
+            SixLetterWords.text.append(contentsOf: "\(textField.text!)\n")
+        default:
+            print("whomp whomp")
+        }
+    }
 
 }
 
