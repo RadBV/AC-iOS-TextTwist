@@ -19,10 +19,15 @@ class ViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var SixLetterWords: UITextView!
     
     @IBAction func typeStuff(_ sender: UITextField) {
-        
+        if !randomGame.words.contains(textField.text!) {
+            
+        }
     }
     
     @IBAction func rightOrWrongWhenEnterPressed(_ sender: UITextField) {
+        
+        
+        
         if randomGame.words.contains(textField.text!) {
             userMessageStuff.text = "Correct!"
             if textField.text?.count == 3 {
@@ -35,6 +40,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
                 SixLetterWords.text.append(contentsOf: textField.text!)
             }
             } else {
+        
                 userMessageStuff.text = "Wrong!"
             }
         }
@@ -43,9 +49,64 @@ class ViewController: UIViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         //userMessage label should be hidden until user enters
+        textField.delegate = self
         availableLetters.text = randomGame.letters
         print(randomGame)
+     
     }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if randomGame.letters.contains(string){
+            userMessageStuff.text = "someting?"
+        
+            return true
+        } else {
+            userMessageStuff.text = "did it work?"
+            return false
+        }
+        
+        
+    }
+    
+    
+    
+//    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+//        if !randomGame.words.contains(textField.text!) {
+//            userMessageStuff.text = "you're a dingus."
+//            return false
+//        }
+//        return true
+//    }
+//
+//    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+//        if !randomGame.words.contains(textField.text!) {
+//            userMessageStuff.text = "you're a dingus."
+//            return true
+//        }
+//        return false
+//    }
+//
+//    func textFieldDidBeginEditing(_ textField: UITextField) {
+//         if !randomGame.words.contains(textField.text!) {
+//            userMessageStuff.text = "you're a dingus."
+//
+//        }
+//
+//    }
+//
+//
+//
+//
+//    func textFieldDidEndEditing(_ textField: UITextField) {
+//        if !randomGame.words.contains(textField.text!) {
+//            userMessageStuff.text = "you're a dingus."
+//
+//        }
+//
+//    }
+//
 
 }
+
+
 
