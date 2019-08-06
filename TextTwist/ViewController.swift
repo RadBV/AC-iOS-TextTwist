@@ -11,7 +11,11 @@ import UIKit
 class ViewController: UIViewController, UITextFieldDelegate {
     
     
-    var currentGame: TestTwistInfo?
+    var currentGame: TestTwistInfo? {
+        didSet{
+            userMessageLabel.text = self.currentGame?.letters
+        }
+    }
     var randomGame = WordData.allInfo.randomElement()!
     @IBOutlet weak var availableLetters: UILabel!
     @IBOutlet weak var textField: UITextField!
@@ -31,10 +35,12 @@ class ViewController: UIViewController, UITextFieldDelegate {
         if let inputText = textField.text{
             let result = currentGame?.verifyGuess(guess: inputText) ?? false
             if result {
+                userMessageLabel.isHidden = false
                 userMessageLabel.text = "Correct!"
                 addAnswerToTextView(answer: inputText)
                 
             } else {
+                userMessageLabel.isHidden = false
                 userMessageLabel.text = "Wrong!"
             }
         }
@@ -43,7 +49,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //userMessage label should be hidden until user enters
+        userMessageLabel.isHidden = true
         textField.delegate = self
         currentGame = chooseNewGame()
         availableLetters.text = currentGame!.letters
@@ -52,15 +58,15 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        if currentGame!.letters.contains(string){
-            userMessageLabel.text = "someting?"
-        
+        if (currentGame?.letters.contains(string) ?? false) || string == ""{
             return true
         } else {
-            userMessageLabel.text = "did it work?"
+            let stringArray: [String] = [string]
+            let lastCharacter = stringArray.last ?? ""
+            userMessageLabel.isHidden = false
+            userMessageLabel.text = "You cannot use \(lastCharacter). \nTry using only the letters available."
             return false
         }
-        
     }
     
     private func chooseNewGame() -> TestTwistInfo {
@@ -70,13 +76,13 @@ class ViewController: UIViewController, UITextFieldDelegate {
     private func addAnswerToTextView(answer: String) {
         switch answer.count {
         case 3:
-           ThreeLetterWords.text.append(contentsOf: "\(textField.text!)\n")
+           ThreeLetterWords.text.append(contentsOf: "\n\(textField.text!)\n")
         case 4:
-            FourLetterWords.text.append(contentsOf: "\(textField.text!)\n")
+            FourLetterWords.text.append(contentsOf: "\n\(textField.text!)\n")
         case 5:
-            FiveLetterWords.text.append(contentsOf: "\(textField.text!)\n")
+            FiveLetterWords.text.append(contentsOf: "\n\(textField.text!)\n")
         case 6:
-            SixLetterWords.text.append(contentsOf: "\(textField.text!)\n")
+            SixLetterWords.text.append(contentsOf: "\n\(textField.text!)\n")
         default:
             print("whomp whomp")
         }
