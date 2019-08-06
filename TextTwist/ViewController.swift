@@ -35,13 +35,16 @@ class ViewController: UIViewController, UITextFieldDelegate {
         if let inputText = textField.text{
             let result = currentGame?.verifyGuess(guess: inputText) ?? false
             if result {
+                
                 userMessageLabel.isHidden = false
                 userMessageLabel.text = "Correct!"
                 addAnswerToTextView(answer: inputText)
+                self.textField.text = ""
                 
             } else {
                 userMessageLabel.isHidden = false
                 userMessageLabel.text = "Wrong!"
+                self.textField.text = ""
             }
         }
         return true
@@ -64,7 +67,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
             let stringArray: [String] = [string]
             let lastCharacter = stringArray.last ?? ""
             userMessageLabel.isHidden = false
-            userMessageLabel.text = "You cannot use \(lastCharacter). \nTry using only the letters available."
+            userMessageLabel.text = "You cannot use \(string). \nTry using only the letters available."
             return false
         }
     }
