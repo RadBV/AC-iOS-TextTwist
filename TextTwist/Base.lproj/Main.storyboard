@@ -110,7 +110,7 @@
                         <outlet property="ThreeLetterWords" destination="wFy-YD-XBE" id="hlw-vP-9Ht"/>
                         <outlet property="availableLetters" destination="g7k-h0-ZUA" id="g6W-8z-E8r"/>
                         <outlet property="textField" destination="Taw-ee-EyZ" id="vpF-Oq-cjf"/>
-                        <outlet property="userMessageStuff" destination="ppF-Kb-Qib" id="qTa-wZ-EL0"/>
+                        <outlet property="userMessageLabel" destination="ppF-Kb-Qib" id="bF8-4y-LvC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

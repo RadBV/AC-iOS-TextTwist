@@ -20,4 +20,8 @@ class WordData {
                       letters: "hisswy",
                       words: ["swishy", "hissy","swish", "hiss","whys","wish","wiss","ywis", "his","shy","sis","why","wis"])
     ]
+    
+    static func getRandomGame() -> TestTwistInfo? {
+        return allInfo.randomElement()
+    }
 }

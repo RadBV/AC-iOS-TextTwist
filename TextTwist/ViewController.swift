@@ -9,6 +9,9 @@
 import UIKit
 
 class ViewController: UIViewController, UITextFieldDelegate {
+    
+    
+    var currentGame: TestTwistInfo?
     var randomGame = WordData.allInfo.randomElement()!
     @IBOutlet weak var availableLetters: UILabel!
     @IBOutlet weak var textField: UITextField!
@@ -25,7 +28,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if randomGame.words.contains(textField.text!) {
+        if currentGame!.words.contains(textField.text!) {
             userMessageLabel.text = "Correct!"
             if textField.text?.count == 3 {
                 ThreeLetterWords.text.append(contentsOf: "\(textField.text!)\n")
@@ -47,13 +50,14 @@ class ViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         //userMessage label should be hidden until user enters
         textField.delegate = self
-        availableLetters.text = randomGame.letters
+        currentGame = chooseNewGame()
+        availableLetters.text = currentGame!.letters
         print(randomGame)
      
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        if randomGame.letters.contains(string){
+        if currentGame!.letters.contains(string){
             userMessageLabel.text = "someting?"
         
             return true
@@ -62,46 +66,12 @@ class ViewController: UIViewController, UITextFieldDelegate {
             return false
         }
         
-        
     }
     
+    private func chooseNewGame() -> TestTwistInfo {
+        return WordData.getRandomGame() ?? TestTwistInfo(wordCount: 0, letters: "", words: [""])
+    }
     
-    
-//    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
-//        if !randomGame.words.contains(textField.text!) {
-//            userMessageStuff.text = "you're a dingus."
-//            return false
-//        }
-//        return true
-//    }
-//
-//    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-//        if !randomGame.words.contains(textField.text!) {
-//            userMessageStuff.text = "you're a dingus."
-//            return true
-//        }
-//        return false
-//    }
-//
-//    func textFieldDidBeginEditing(_ textField: UITextField) {
-//         if !randomGame.words.contains(textField.text!) {
-//            userMessageStuff.text = "you're a dingus."
-//
-//        }
-//
-//    }
-//
-//
-//
-//
-//    func textFieldDidEndEditing(_ textField: UITextField) {
-//        if !randomGame.words.contains(textField.text!) {
-//            userMessageStuff.text = "you're a dingus."
-//
-//        }
-//
-//    }
-//
 
 }
 
