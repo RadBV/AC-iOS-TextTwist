@@ -12,7 +12,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     var randomGame = WordData.allInfo.randomElement()!
     @IBOutlet weak var availableLetters: UILabel!
     @IBOutlet weak var textField: UITextField!
-    @IBOutlet weak var userMessageStuff: UILabel!
+    @IBOutlet weak var userMessageLabel: UILabel!
     @IBOutlet weak var ThreeLetterWords: UITextView!
     @IBOutlet weak var FourLetterWords: UITextView!
     @IBOutlet weak var FiveLetterWords: UITextView!
@@ -24,12 +24,9 @@ class ViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
-    @IBAction func rightOrWrongWhenEnterPressed(_ sender: UITextField) {
-        
-        
-        
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if randomGame.words.contains(textField.text!) {
-            userMessageStuff.text = "Correct!"
+            userMessageLabel.text = "Correct!"
             if textField.text?.count == 3 {
                 ThreeLetterWords.text.append(contentsOf: "\(textField.text!)\n")
             } else if textField.text?.count == 4 {
@@ -39,12 +36,12 @@ class ViewController: UIViewController, UITextFieldDelegate {
             } else if textField.text?.count == 6 {
                 SixLetterWords.text.append(contentsOf: textField.text!)
             }
-            } else {
-        
-                userMessageStuff.text = "Wrong!"
-            }
+        } else {
+            
+            userMessageLabel.text = "Wrong!"
         }
-    
+        return true
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,11 +54,11 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         if randomGame.letters.contains(string){
-            userMessageStuff.text = "someting?"
+            userMessageLabel.text = "someting?"
         
             return true
         } else {
-            userMessageStuff.text = "did it work?"
+            userMessageLabel.text = "did it work?"
             return false
         }
         

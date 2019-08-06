@@ -89,7 +89,6 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
-                                    <action selector="rightOrWrongWhenEnterPressed:" destination="BYZ-38-t0r" eventType="primaryActionTriggered" id="wxP-I4-ceC"/>
                                     <action selector="typeStuff:" destination="BYZ-38-t0r" eventType="editingChanged" id="3vY-Bw-M86"/>
                                 </connections>
                             </textField>
