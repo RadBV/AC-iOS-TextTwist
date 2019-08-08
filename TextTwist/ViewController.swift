@@ -36,15 +36,22 @@ class ViewController: UIViewController, UITextFieldDelegate {
             let result = currentGame?.verifyGuess(guess: inputText) ?? false
             if result {
                 
-                userMessageLabel.isHidden = false
-                userMessageLabel.text = "Correct!"
-                addAnswerToTextView(answer: inputText)
-                self.textField.text = ""
+                    userMessageLabel.isHidden = false
+                    userMessageLabel.text = "Correct!"
+                if !(currentGame?.wasTheWordAlreadyUsed(word: inputText) ?? true) {
+                    currentGame?.addTheCorrectWordToUsedWords(word: inputText)
+                    addAnswerToTextView(answer: inputText)
+                    self.textField.text = ""
+                } else {
+                    userMessageLabel.text = "you already used that letter"
+                }
                 
             } else {
+                
                 userMessageLabel.isHidden = false
                 userMessageLabel.text = "Wrong!"
                 self.textField.text = ""
+                
             }
         }
         return true
@@ -56,6 +63,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         textField.delegate = self
         currentGame = chooseNewGame()
         availableLetters.text = currentGame!.letters
+        addsEmptyLineInTextViewsJustToMakeItLookPretty()
         print(randomGame)
      
     }
@@ -79,17 +87,26 @@ class ViewController: UIViewController, UITextFieldDelegate {
     private func addAnswerToTextView(answer: String) {
         switch answer.count {
         case 3:
-           ThreeLetterWords.text.append(contentsOf: "\n\(textField.text!)\n")
+           ThreeLetterWords.text.append(contentsOf: "\(textField.text!)\n")
         case 4:
-            FourLetterWords.text.append(contentsOf: "\n\(textField.text!)\n")
+            FourLetterWords.text.append(contentsOf: "\(textField.text!)\n")
         case 5:
-            FiveLetterWords.text.append(contentsOf: "\n\(textField.text!)\n")
+            FiveLetterWords.text.append(contentsOf: "\(textField.text!)\n")
         case 6:
-            SixLetterWords.text.append(contentsOf: "\n\(textField.text!)\n")
+            SixLetterWords.text.append(contentsOf: "\(textField.text!)\n")
         default:
             print("whomp whomp")
         }
     }
+    
+    private func addsEmptyLineInTextViewsJustToMakeItLookPretty() {
+        ThreeLetterWords.text.append("\n")
+        FourLetterWords.text.append("\n")
+        FiveLetterWords.text.append("\n")
+        SixLetterWords.text.append("\n")
+    }
+    
+    
 
 }
 

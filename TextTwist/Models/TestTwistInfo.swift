@@ -9,15 +9,31 @@
 import Foundation
 
 struct TestTwistInfo {
+    
     let wordCount: Int
     let letters: String
     let words: [String]
+    var usedWords: [String] = []
+    
+    init(wordCount: Int, letters: String, words: [String]) {
+        self.wordCount = wordCount
+        self.letters = letters
+        self.words = words
+    }
     
     func verifyGuess(guess: String) -> Bool {
         return words.contains(guess)
     }
+    
+    mutating func addTheCorrectWordToUsedWords(word: String) {
+        usedWords.append(word)
+    }
+    
+    func wasTheWordAlreadyUsed(word: String) -> Bool {
+        return usedWords.contains(word)
+    }
+    
 }
-
 
 
     /*

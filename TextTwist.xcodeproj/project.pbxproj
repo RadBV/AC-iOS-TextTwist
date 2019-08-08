@@ -71,8 +71,8 @@
 			children = (
 				5475D6D51F9EDB1A00AFA523 /* Supporting Files */,
 				1D478C9622F9D3D700C4C086 /* Models */,
-				5475D6D31F9ED6DC00AFA523 /* TextTwistModel.swift */,
 				5475D6C11F9ED24100AFA523 /* ViewController.swift */,
+				5475D6D31F9ED6DC00AFA523 /* TextTwistModel.swift */,
 				5475D6C31F9ED24100AFA523 /* Main.storyboard */,
 				5475D6CB1F9ED24100AFA523 /* Info.plist */,
 			);
